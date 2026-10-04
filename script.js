@@ -1,7 +1,6 @@
 var typed = new Typed(".multiple-text", {
     strings: [
         "Data Analytics Enthusiast",
-        "Java Developer",
         "Problem Solver",
         "Python Learner"
     ],
