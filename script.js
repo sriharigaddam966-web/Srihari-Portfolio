@@ -35,11 +35,28 @@ themeBtn.onclick = () => {
 //================ MOBILE MENU =================
 
 const menuIcon = document.querySelector("#menu-icon");
-
 const navbar = document.querySelector(".navbar");
 
-menuIcon.onclick = () =>{
+if (menuIcon && navbar) {
+    menuIcon.addEventListener("click", () => {
+        const isOpen = navbar.classList.toggle("active");
 
-    navbar.classList.toggle("active");
+        // Change hamburger icon to close icon
+        menuIcon.classList.toggle("fa-bars", !isOpen);
+        menuIcon.classList.toggle("fa-xmark", isOpen);
 
+        menuIcon.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Close the menu after clicking a navigation link
+    navbar.querySelectorAll("ul a").forEach(link => {
+        link.addEventListener("click", () => {
+            navbar.classList.remove("active");
+
+            menuIcon.classList.add("fa-bars");
+            menuIcon.classList.remove("fa-xmark");
+
+            menuIcon.setAttribute("aria-expanded", "false");
+        });
+    });
 }

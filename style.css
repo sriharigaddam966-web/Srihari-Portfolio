@@ -1011,3 +1011,119 @@ section{
 }
 
 }
+
+/* ===== MOBILE NAVIGATION FIX ===== */
+
+#menu-icon {
+    display: none;
+}
+
+header .logo {
+    text-decoration: none;
+    color: #00eeff;
+    font-size: 2rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 65px;
+        padding: 12px 5%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #061b2b;
+        z-index: 10000;
+    }
+
+    header .logo {
+        font-size: 1.4rem;
+    }
+
+    #menu-icon {
+        display: block;
+        color: #00eeff;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 10002;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px 20px 20px;
+        background: #061b2b;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+    }
+
+    .navbar.active {
+        display: flex;
+    }
+
+    .navbar ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .navbar ul li {
+        width: 100%;
+    }
+
+    .navbar ul li a {
+        display: block;
+        padding: 12px 10px;
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .navbar .theme-toggle {
+        align-self: flex-start;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    /* Prevent content from hiding behind the fixed header */
+    html {
+        scroll-padding-top: 80px;
+    }
+}
